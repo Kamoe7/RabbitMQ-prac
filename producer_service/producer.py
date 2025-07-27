@@ -1,23 +1,35 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
 import pika
 import json
 
+app = FastAPI()
 
-message = {
-    "type": "user.signup",
-    "user_id": 42,
-    "email": "test@example.com"
-}
+# Message schema
+class Message(BaseModel):
+    type: str
+    user_id: int
+    email: str
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel()
+# RabbitMQ connection setup (reused)
+def get_channel():
+    connection = pika.BlockingConnection(pika.ConnectionParameters("localhost"))
+    channel = connection.channel()
+    channel.exchange_declare(exchange='micro_topic', exchange_type='topic')
+    return connection, channel
 
-channel.exchange_declare(exchange='micro_topic',exchange_type='topic')
+# Publish endpoint
+@app.post("/publish")
+def publish_message(message: Message):
+    connection, channel = get_channel()
 
-channel.basic_publish(
-    exchange='micro_topic',
-    routing_key=message['type'],
-    body=json.dumps(message)
-)
+    # Convert to JSON and publish
+    channel.basic_publish(
+        exchange='micro_topic',
+        routing_key=message.type,
+        body=json.dumps(message.dict())
+    )
+    print(f"[x] Sent: {message.dict()}")
 
-print(f" [x] Sent {message}")
-connection.close()
+    connection.close()
+    return {"status": "sent", "message": message.dict()}
