@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6f91829-c37c-4fa6-b771-d2f2bd3ef54a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/RabbitMQ.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/consumer_service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/consumer_service/consumer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/procedure/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/procedure/consumer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/procedure/producer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/producer_service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/producer_service/producer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consumer_service/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/consumer_service/consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producer_service/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/producer_service/producer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +24,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Kamoe7"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:Kamoe7/RabbitMQ-prac.git",
+    "accountId": "30fd6404-8c1b-4c26-a687-f6470947c6a2"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8
 }]]></component>
@@ -48,7 +50,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "main"
   }
 }]]></component>
   <component name="SharedIndexes">
