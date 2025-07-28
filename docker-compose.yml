@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  fastapi-producer:
+    build:
+      context: ./producer_service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    networks:
+      - app-network
+
+  consumer:
+    build:
+      context: ./consumer_service
+    depends_on:
+      - rabbitmq
+      - mongodb
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+      - MONGO_HOST=mongodb
+    restart: always
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:8.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge
