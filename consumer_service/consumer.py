@@ -1,9 +1,15 @@
 import pika
 import json
+from pymongo import MongoClient
 
-def process(data):
-    if data["user_id"] == 42:
-        raise Exception('Simulated processing error!')
+# def process(data):
+#     if data["user_id"] == 42:
+#         raise Exception('Simulated processing error!')
+
+#MongoDB setup
+mongo_client = MongoClient("mongodb://localhost:27017")
+db=mongo_client["microservice_db"]
+collections = db["messages"]
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
@@ -23,7 +29,14 @@ def callback(ch,method,properties,body):
     try:
         data = json.loads(body.decode())
         print(f" [x] Received {data}")
-        process(data)
+        # process(data)
+
+        #insert into mongodb
+        collections.insert_one(data)
+        print(f"Stored in MongoDB: {data}")
+
+
+        #Achnowledge success
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
     except Exception as e:
