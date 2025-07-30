@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage('Checkout'){
             steps {
-                git 'https://github.com/Kamoe7/RabbitMQ-prac'
+                git branch:'main' ,url :'https://github.com/Kamoe7/RabbitMQ-prac'
             }
         }
 
